@@ -20,4 +20,5 @@ Finance jsou rozděleny, a to, že prasata i ovce mají oddělené finance. Do t
 ****************************************************************************************************************************************
 
 
+
 Autor projektu: Bc. Miroslav Hájek
