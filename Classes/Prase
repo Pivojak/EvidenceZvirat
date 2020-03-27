@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace EvidenceZvirat
+{
+    public class Prase
+    {
+        /// <summary>
+        /// Pojmenování prasete
+        /// </summary>
+        public string Jmeno { get; set; }
+        /// <summary>
+        /// Registrační číslo prase v chovu
+        /// </summary>
+        public int EvidencniCislo { get; set; }
+        /// <summary>
+        /// Datum narození prasete
+        /// </summary>
+        public DateTime DatumNarozeni { get; set; }
+        /// <summary>
+        /// Prasnice (matka selete)
+        /// </summary>
+        public Svine Matka { get; set; }
+        /// <summary>
+        /// Poslední zadaný veterinární záznam
+        /// </summary>
+        public Veterina PosledniZaznam { get; set; }
+        /// <summary>
+        /// Váha prasete
+        /// </summary>
+        public int Vaha { get; set; }
+        /// <summary>
+        /// Žena * Muž 
+        /// </summary>
+        public string Pohlavi { get; set; }
+        /// <summary>
+        /// Podrobnější popis k praseti - poznámky ke zdravotnímu stavu apod
+        /// </summary>
+        public string Popis { get; set; }
+        private int vek;
+        /// <summary>
+        /// Věk prasete ve DNECH
+        /// </summary>
+        public int Vek
+        {
+            get
+            {
+                DateTime dnes = DateTime.Now.Date;
+                TimeSpan rozdil = dnes - DatumNarozeni;
+                int pomocna = int.Parse(rozdil.TotalDays.ToString());
+                vek = pomocna;
+                return pomocna;
+            }
+        }
+
+        /// <summary>
+        /// Základní konstruktor
+        /// </summary>
+        /// <param name="poradoveCislo">Registrační číslo prase v chovu</param>
+        /// <param name="datumNarozeni">Datum narození prasete</param>
+        /// <param name="matka"></param>
+        public Prase(int poradoveCislo, DateTime datumNarozeni,Svine matka)
+        {
+            EvidencniCislo = poradoveCislo;
+            DatumNarozeni = datumNarozeni;
+            Matka = matka;
+            Vaha = 0;
+            Jmeno = "Selatko";
+        }
+
+        /// <summary>
+        /// Rozšířený konstruktor
+        /// </summary>
+        /// <param name="poradoveCislo">Registrační číslo prase v chovu</param>
+        /// <param name="datumNarozeni">Datum narození prasete</param>
+        /// <param name="matka">Prasnice (matka selete)</param>
+        /// <param name="popis">Podrobnější popis k praseti - poznámky ke zdravotnímu stavu apod</param>
+        public Prase(int poradoveCislo, DateTime datumNarozeni, Svine matka, string popis)
+        {
+            EvidencniCislo = poradoveCislo;
+            DatumNarozeni = datumNarozeni;
+            Matka = matka;
+            Popis = popis;
+            Vaha = 0;
+            Jmeno = "Selatko";
+        }
+
+        /// <summary>
+        /// Light konstruktor
+        /// </summary>
+        /// <param name="poradoveCislo">Registrační číslo prase v chovu</param>
+        /// <param name="datumNarozeni">Datum narození prasete</param>
+        public Prase(int poradoveCislo, DateTime datumNarozeni)
+        {
+            EvidencniCislo = poradoveCislo;
+            DatumNarozeni = datumNarozeni;
+            Jmeno = "Selatko";
+        }
+
+        /// <summary>
+        /// Prázdný konstruktor pro XML serializer
+        /// </summary>
+        public Prase()
+        {
+
+        }
+
+        /// <summary>
+        /// Metoda pro zadání veterinárního záznamu
+        /// </summary>
+        /// <param name="zaznam"></param>
+        public void ZadejZaznam(Veterina zaznam)
+        {
+            PosledniZaznam = zaznam;
+        }
+        
+        /// <summary>
+        /// Přetížená metoda pro výpis, využíváno pro výpis v ListBoxu
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return String.Format("{0}\t{1}\t{2}\t{3}", Jmeno, EvidencniCislo, DatumNarozeni.Date.ToShortDateString(), Vek);
+        }
+    }
+}
