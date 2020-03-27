@@ -1,0 +1,109 @@
+﻿<Window x:Class="EvidenceZvirat.OvceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvidenceZvirat"
+        mc:Ignorable="d"
+        Title="OvceWindow" Height="520" Width="530" BorderBrush="Black" BorderThickness="4" WindowStartupLocation="CenterScreen" Icon="ovce_iconka.ico" Background="#FF44B3D0" >
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Přidání / úprava ovce" Grid.ColumnSpan="2" FontSize="16" FontWeight="Black" HorizontalAlignment="Center" Margin="5,2,5,0" />
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center">
+            <TextBlock FontSize="13" FontWeight="Black" Text="Jehnička" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <CheckBox Name="jehnickaCheckBox" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Beránek" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <CheckBox Name="beranekCheckBox" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Bahnice" VerticalAlignment="Center" Margin="25,0,5,0"/>
+            <CheckBox Name="zenaCheckBox" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Beran" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <CheckBox  Name="muzCheckBox" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2"  Grid.ColumnSpan="2"  Margin="5"  Orientation="Horizontal" HorizontalAlignment="Left" >
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Jméno" Width="55" VerticalAlignment="Center"/>
+            <TextBox FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding Jmeno}"  Name="jmenoTextBox" Width="80" Margin="10,0,10,0"/>
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Číslo*" Width="55" VerticalAlignment="Center"/>
+            <TextBox FontSize="13"  BorderBrush="Black" BorderThickness="2" Text="{Binding EvidencniCislo}"  Name="evidencniCisloTextBox" Margin="10,0,10,0" Width="90" />
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Stříhání" Width="60" VerticalAlignment="Center"/>
+            <TextBox  FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding DatumStrihani, StringFormat=d.M.yyyy}"  Name="strihaniCislo_ovceTextBox" Margin="10,0,10,0"  Width="80" />
+        </StackPanel>
+        <TextBlock Text="Datum" Grid.ColumnSpan="2"  FontSize="14" Margin="5,0,0,0" FontWeight="Black" Grid.Row="3" HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2"  Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Zařazen*" Width="55" VerticalAlignment="Center"/>
+            <TextBox FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding ZarazeniDoChovu, StringFormat=d.M.yyyy}"   Name="datumZarazeniTextBox" Margin="10,0,10,0" Width="80"/>
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Vyřazen" Width="55" VerticalAlignment="Center"/>
+            <TextBox FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding VyrazeniZChovu, StringFormat=d.M.yyyy}"   Name="datumVyrazeniTextBox" Margin="10,0,10,0" Width="90"/>
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Narozen*" Width="60" VerticalAlignment="Center"/>
+            <TextBox FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding DatumNarozeni, StringFormat=d.M.yyyy}"   Name="datumNarozeniTextBox" Margin="10,0,0,0" Width="80"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2"  Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Linie " Width="55" VerticalAlignment="Center"/>
+            <TextBox  FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding Linie}"  Name="linieTextBox" Margin="10,0,10,0"  Width="80"/>
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Důvod " Width="55" VerticalAlignment="Center"/>
+            <TextBox FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding DuvodVyrazeni}"   Name="duvodVyrazeniTextBox"  Margin="10,0,10,0" Width="90"/>
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Klasifik." Width="60" VerticalAlignment="Center"/>
+            <TextBox FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding Klasifikace}"   Name="klasifikaceTextBox" Margin="10,0,0,0"  Width="80"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Margin="5" Grid.ColumnSpan="2" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock FontSize="13" FontWeight="Black"  Text="Popis:"  VerticalAlignment="Center" Width="55"/>
+            <TextBox FontSize="13" BorderBrush="Black" BorderThickness="2" Text="{Binding Popis}" Name="popisTextBox" Width="405" Margin="10,0,10,0"/>
+        </StackPanel>
+
+
+        <ListBox Name="jehneStavajiciListBox" FontSize="13" FontWeight="Black" Grid.ColumnSpan="2"  Grid.Row="7" Margin="5" Background="#FF44B3D0" ItemsSource="{Binding}"/>
+       
+        <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="CELKEM: " FontSize="14" FontWeight="Black" Margin="0,0,45,4"/>
+            <TextBlock Text="Živých" FontSize="13" Margin="5,0,15,0" FontWeight="Black" Width="60"/>
+            <TextBox Name="zivaAktualniTextBox" BorderBrush="Black" BorderThickness="2" Focusable="False" Text="{Binding ZivychJehnat}" FontSize="13" Margin="0,0,10,0" Width="35"/>
+            <TextBlock Text="Mrtvých" FontSize="13" FontWeight="Black" Width="60" />
+            <TextBox Name="mrtvaAktualniTextBox" BorderBrush="Black" BorderThickness="2" Focusable="False"  Text="{Binding MrtvychJehnat}" FontSize="13" Margin="15,0,15,0" Width="35"/>
+            <TextBlock Text="Odchov" FontSize="13" FontWeight="Black" Width="60" />
+            <TextBox Name="odchovAktualniTextBox" BorderBrush="Black" BorderThickness="2" Focusable="False" Text="{Binding OdchovanychJehnat}"  FontSize="13" Margin="15,0,5,0" Width="35"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="10" Grid.ColumnSpan="2" Margin="5">
+            <TextBlock Text="Pro zadání matky/otce, které nejsou evidovány, musí číslo matky/otce začínat 0 (0CZ52..)" FontSize="11" FontWeight="Black"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="11" HorizontalAlignment="Center" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,30,0,0">
+            <Button Name="odcerveniButton" BorderBrush="Black" BorderThickness="2" Content="Odčervení" Margin="4" Background="White" Width="80" FontSize="13" FontWeight="Black" Click="OdcerveniButton_Click"/>
+            <Button Name="ockovaniButton" BorderBrush="Black" BorderThickness="2" Content="Očkování" Margin="4" Background="White" Width="80" FontSize="13" FontWeight="Black" Click="OckovaniButton_Click"/>
+            <Button Name="ulozNoveButton" BorderBrush="Black" BorderThickness="2" FontSize="14" FontWeight="Black" Content="Ulož" Grid.Row="5" Margin="4" Width="80"  Background="#FF65FF52" Click="UlozButton_Click" IsDefault="True"/>
+            <Button Name="veterinaButton" BorderBrush="Black" BorderThickness="2" Content="Veterina" Margin="4" Background="White" Width="80" FontSize="13" FontWeight="Black" Click="VeterinaButton_Click"/>
+            <Button Name="porodButton" BorderBrush="Black" BorderThickness="2" Content="Porod" Margin="4" Background="White" Width="80" FontSize="13" FontWeight="Black" Click="PorodButton_Click"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="9" Grid.Column="0" Margin="5" Orientation="Horizontal">
+            <TextBlock Text="Číslo matky*" Width="80"  FontSize="13" FontWeight="Black"/>
+            <TextBox Text="{Binding EvidencniCislo}" BorderBrush="Black" BorderThickness="2" Name="evidencniCisloMatkyTextBox" Margin="20,0,10,0" FontSize="13" Width="125"/>
+        </StackPanel>
+        <StackPanel Grid.Row="9" Grid.Column="1" Margin="5" Orientation="Horizontal">
+            <TextBlock Text="Číslo otce*" Width="80" FontSize="13" FontWeight="Black"/>
+            <TextBox Text="{Binding EvidencniCislo}" BorderBrush="Black" BorderThickness="2" Name="evidencniCisloOtceTextBox" Margin="20,0,10,0" FontSize="13" Width="125"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

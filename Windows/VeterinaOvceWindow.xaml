@@ -1,0 +1,52 @@
+﻿<Window x:Class="EvidenceZvirat.VeterinaOvceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvidenceZvirat"
+        mc:Ignorable="d"
+        Title="Veterinární záznam" Height="460" Width="310" BorderBrush="Black" BorderThickness="4" Background="#FF44B3D0" WindowStartupLocation="CenterScreen" 
+        Icon="ovce_iconka.ico"  Margin="10">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5" DataContext="{Binding ElementName=veterinaListBox,Path=SelectedItem}">
+            <TextBlock Text="Datum*" Width="45" FontSize="12" FontWeight="Black" Margin="0,0,20,0" />
+            <TextBox Name="datumTextBox" BorderBrush="Black" BorderThickness="2" FontSize="13" Width="80" Text="{Binding DatumNavstevy, StringFormat=dd.MM.yyyy}"/>
+            <TextBlock Text="Číslo" MinWidth="40" FontSize="12" Margin="5,0,0,5" FontWeight="Black" />
+            <TextBox Focusable="False" BorderBrush="Black" BorderThickness="2" Name="cisloTextBox" FontSize="13" Width="85" Text="{Binding CisloNavstevy}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" DataContext="{Binding ElementName=veterinaListBox,Path=SelectedItem}">
+            <TextBlock Text="Účel*" Width="45" FontSize="12" FontWeight="Black" Margin="0,0,20,0" />
+            <TextBox Name="ucelTextBox" BorderBrush="Black" BorderThickness="2" FontSize="13" Width="210" Text="{Binding Ucel}"
+                     TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5" DataContext="{Binding ElementName=veterinaListBox,Path=SelectedItem}">
+            <TextBlock Text="Léky" Width="45" FontSize="12" FontWeight="Black" Margin="0,0,20,0" />
+            <TextBox Name="lekyTextBox" BorderBrush="Black" BorderThickness="2" FontSize="13" MinWidth="210" Text="{Binding PodaneLecivo}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="5" DataContext="{Binding ElementName=veterinaListBox,Path=SelectedItem}">
+            <TextBlock Text="Úkony" Width="45" FontSize="12" FontWeight="Black" Margin="0,0,20,0" />
+            <TextBox Name="ukonyTextBox" BorderBrush="Black" BorderThickness="2" FontSize="13" Width="210" Text="{Binding ProvedeneUkony}"
+                     TextWrapping="Wrap"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="5" DataContext="{Binding ElementName=veterinaListBox,Path=SelectedItem}">
+            <TextBlock Text="Cena*" Width="45" FontSize="12" FontWeight="Black" Margin="0,0,20,0"/>
+            <TextBox Name="cenaTextBox" BorderBrush="Black" BorderThickness="2" Text="{Binding Cena}" FontSize="13" Width="210" />
+        </StackPanel>
+
+        <ListBox Name="veterinaListBox" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding}" FontSize="13" FontWeight="Black" Margin="10"  Grid.Row="5" Background="#FF44B3D0" SelectionChanged="VeterinaListBox_SelectionChanged" />
+        <Button Name="okButton"  BorderBrush="Black" BorderThickness="2" FontWeight="Black" FontSize="13" Content="Ulož" Click="OkButton_Click" Margin="5" Grid.Row="6" Background="#FF65FF52" IsDefault="True"/>
+    </Grid>
+</Window>

@@ -1,0 +1,87 @@
+﻿<Window x:Class="EvidenceZvirat.ListPraseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvidenceZvirat"
+        mc:Ignorable="d"
+        Title="ListPraseWindow" Height="450" Width="500" Background="#FF44B3D0" Margin="10" Icon="prase_iconka.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" DataContext="{Binding ElementName=maruskaListBox,Path=SelectedItem}" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Evidenční číslo: " FontSize="14" FontWeight="Black"/>
+                <TextBlock Text="{Binding EvidencniCislo}" FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Datum narození: " FontSize="14" FontWeight="Black" />
+                <TextBlock Text="{Binding DatumNarozeni,StringFormat=dd.MM.yyyy}"  FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Váha: " FontSize="14" FontWeight="Black"/>
+                <TextBlock Text="{Binding Vaha}" FontSize="14"/>
+                <TextBlock Text=" kg" FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Věk: " FontSize="14" FontWeight="Black" />
+                <TextBlock Text="{Binding Vek}"  FontSize="14"/>
+                <TextBlock Text=" dní" FontSize="14"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" DataContext="{Binding ElementName=baruskaListBox,Path=SelectedItem}" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Evidenční číslo: " FontSize="14" FontWeight="Black"/>
+                <TextBlock Text="{Binding EvidencniCislo}" FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Datum narození: " FontSize="14" FontWeight="Black" />
+                <TextBlock Text="{Binding DatumNarozeni,StringFormat=dd.MM.yyyy}"  FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Váha: " FontSize="14" FontWeight="Black"/>
+                <TextBlock Text="{Binding Vaha}" FontSize="14"/>
+                <TextBlock Text=" kg" FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,2">
+                <TextBlock Text="Věk: " FontSize="14" FontWeight="Black" />
+                <TextBlock Text="{Binding Vek}"  FontSize="14"/>
+                <TextBlock Text=" dní" FontSize="14"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Button Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="2" Background="#FF006BEC" Margin="5" MaxWidth="100" Click="MaruskaButton_Click" Name="maruskaButton" Content="Maruška" FontSize="18" FontWeight="Black"/>
+        <Button Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="2" Background="#FF006BEC" Margin="5,5,5,0" MaxWidth="100" Click="BaruskaButton_Click" Name="baruskaButton" Content="Baruška" FontSize="18" FontWeight="Black" Height="40" VerticalAlignment="Top"/>
+        <ListBox Name="maruskaListBox" Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding}" Background="#FF44B3D0" SelectionChanged="MaruskaListBox_SelectionChanged" />
+        <ListBox Name="baruskaListBox" Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding}" Background="#FF44B3D0" SelectionChanged="BaruskaListBox_SelectionChanged" />
+
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" >
+            <Button Name="upravMaruska" BorderBrush="Black" BorderThickness="2" Content="Uprav" FontWeight="Black" Margin="0,0,20,0" MinWidth="60" Background="GreenYellow" Click="UpravMaruska_Click"/>
+            <Button Name="odeberMaruska" BorderBrush="Black" BorderThickness="2" Content="Odeber" FontWeight="Black" MinWidth="60" Background="OrangeRed" Click="OdeberMaruska_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+            <Button Name="upravBaruska" BorderBrush="Black" BorderThickness="2" Content="Uprav" MinWidth="60" FontWeight="Black" Margin="0,0,20,0" Background="GreenYellow" Click="UpravBaruska_Click"/>
+            <Button Name="odeberBaruska" BorderBrush="Black" BorderThickness="2" Content="Odeber" MinWidth="60" FontWeight="Black" Background="OrangeRed" Click="OdeberBaruska_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
