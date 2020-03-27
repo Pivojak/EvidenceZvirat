@@ -1,0 +1,99 @@
+<Window x:Class="EvidenceZvirat.ListOvceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvidenceZvirat"
+        mc:Ignorable="d"
+        Title="Seznam ovce" Height="400" Width="650" Background="#FF44B3D0" BorderBrush="Black" BorderThickness="4" WindowStartupLocation="CenterScreen" Icon="ovce_iconka.ico">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.ColumnSpan="3" Grid.Row="0" Margin="0" Background="Black">
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3" Background="#FF44B3D0" Margin="2">
+            <StackPanel Grid.Column="0" Grid.Row="0" Name="prvniSloupecStackPanel" Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Jméno: " Width="65" FontSize="13" Margin="2,0,5,0" FontWeight="Black"/>
+                    <TextBlock Text="{Binding Jmeno}" Width="85" FontSize="13" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Narození: " Width="65" FontSize="13" FontWeight="Black" Margin="2,0,5,0"/>
+                    <TextBlock Text="{Binding DatumNarozeni, StringFormat=dd.MM.yyyy}" Width="85"   FontSize="13"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Otec: " Width="65" FontSize="13" FontWeight="Black" Margin="2,0,5,0"/>
+                    <TextBlock Text="{Binding Otec.EvidencniCislo}"  Width="85" FontSize="13"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="0" Name="druhySloupecStackPanel" Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Pohlaví: " FontSize="13" Width="65" FontWeight="Black" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding Pohlavi}" Width="85" FontSize="13"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Číslo: " FontSize="13" Width="65" FontWeight="Black" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding EvidencniCislo}" Name="evidencniCisloTextBlock" Width="85" FontSize="13" Margin="0,0,5,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Matka: " FontSize="13" Width="65" FontWeight="Black" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding Matka.EvidencniCislo}" Width="85"  FontSize="13"/>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="2" Grid.Row="0" Name="tretiSloupecStackPanel" Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Živých: " FontSize="13" Width="65" FontWeight="Black" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding ZivychJehnat}" Width="85" FontSize="13"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Mrtvých: " FontSize="13" Width="65" FontWeight="Black" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding MrtvychJehnat}" Width="85"  FontSize="13" Margin="0,0,5,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Odchov: " FontSize="13" Width="65" FontWeight="Black" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding OdchovanychJehnat}" Width="85"  FontSize="13"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" >
+            <TextBlock Text="Ovce" Margin="5" FontSize="14" FontWeight="Black" HorizontalAlignment="Center"/>
+            <TextBlock Margin="5,0,0,0" FontSize="13" FontWeight="Black" Name="pocetOvciTextBlock"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" >
+            <TextBlock Text="Berani" Margin="5" FontSize="14" FontWeight="Black" HorizontalAlignment="Center"/>
+            <TextBlock Margin="5,0,0,0" FontSize="13" FontWeight="Black" Name="pocetBeranuTextBlock"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" >
+            <TextBlock Text="Jehňata" Margin="5" FontSize="14" FontWeight="Black" HorizontalAlignment="Center"/>
+            <TextBlock Margin="5,0,0,0"  FontSize="13" FontWeight="Black" Name="pocetJehnatTextBlock"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Background="White">
+
+        </StackPanel>
+        <ListBox Name="ovceListBox" Grid.Row="2" FontSize="12" FontWeight="Black" Grid.Column="0" Margin="5" Background="#FF44B3D0" ItemsSource="{Binding SeznamOvci}" SelectionChanged="OvceListBox_SelectionChanged"/>
+        <ListBox Name="beranListBox" Grid.Row="2" FontSize="12" FontWeight="Black" Grid.Column="1" Margin="5" Background="#FF44B3D0" ItemsSource="{Binding SeznamBeranu}" SelectionChanged="beranListBox_SelectionChanged"/>
+        <ListBox Name="jehneListBox" Grid.Row="2" FontSize="12" FontWeight="Black" Grid.Column="2" Margin="5" Background="#FF44B3D0" ItemsSource="{Binding SeznamJehnat}" SelectionChanged="jehneListBox_SelectionChanged"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5" Grid.Column="0" Grid.ColumnSpan="3">
+            <Button Width="80" BorderBrush="Black" BorderThickness="2" FontWeight="Black" Name="odeberButton" Background="#FFFF3C3C" Content="Odeber" FontSize="16" Click="OdeberButton_Click"/>
+            <Button Width="80" BorderBrush="Black" BorderThickness="2" FontWeight="Black" Name="okButton" Background="#FF65FF52" Margin="20,0,0,0" Content="OK" Click="OkButton_Click" FontSize="16" IsDefault="True"/>
+            <Button Width="80" BorderBrush="Black" BorderThickness="2" FontWeight="Black"  Name="upravButton" Background="#FF65FF52" Content="Uprav" Margin="20,0,20,0" FontSize="16" Click="UpravButton_Click"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
